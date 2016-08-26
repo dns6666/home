@@ -9,6 +9,7 @@ public class Contato {
 	private String email;
 	private String address;
 	private Calendar birthDate;
+	
 	public String getName() {
 		return name;
 	}
@@ -32,6 +33,10 @@ public class Contato {
 	}
 	public void setBirthDate(Calendar birthDate) {
 		this.birthDate = birthDate;
+	}
+	public void setId(Long id) {
+		this.id = id;
+		
 	}
 	
 	
