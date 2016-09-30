@@ -39,6 +39,23 @@ public class ContatoDao {
 		}
 	}
 
+	public void altera(final Contato contato) {
+		final String sql = ("update contadtos set nome=?, email=?, endereço=?, dataNascimento=? where id = ?");
+
+		try {
+			final PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, contato.getName());
+			stmt.setString(2, contato.getEmail());
+			stmt.setString(3, contato.getAddress());
+			stmt.setDate(4, new Date(contato.getBirthDate().getTimeInMillis()));
+			stmt.setLong(5, contato.getId());
+			stmt.execute();
+			stmt.close();
+		} catch (final SQLException e) {
+			throw new DaoException();
+		}
+	}
+
 	public List<Contato> getLista() {
 		try {
 			final List<Contato> contatos = new ArrayList<Contato>();
@@ -67,16 +84,16 @@ public class ContatoDao {
 		}
 	}
 
-	public List<Contato> getLista(final int i) {
+	public List<Contato> getListaPosicao(final Long i) {
 		try {
-			final List<Contato> contatos = new ArrayList<Contato>();
-			final PreparedStatement stmt = this.connection.prepareStatement("select * from contatos" + "where Id = ?");
+			final List<Contato> contatos = new ArrayList<>();
+			final PreparedStatement stmt = this.connection.prepareStatement("select * from contatos where id = ?");
 			stmt.setLong(1, i);
 			final ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				final Contato contato = new Contato();
-				contato.setId(rs.getLong("Id"));
+				contato.setId(rs.getLong("id"));
 				contato.setName(rs.getString("nome"));
 				contato.setEmail(rs.getString("email"));
 				contato.setAddress(rs.getString("endereco"));
@@ -95,4 +112,15 @@ public class ContatoDao {
 			throw new DaoException();
 		}
 	}
+
+	public void remove(final Contato contato) {
+		try {
+			final PreparedStatement stmt = connection.prepareStatement("delete from contatos where id = ?");
+			stmt.setLong(1, contato.getId());
+			stmt.execute();
+			stmt.close();
+		} catch (final SQLException e) {
+			throw new DaoException();
+		}
+	};
 }
