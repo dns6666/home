@@ -40,7 +40,7 @@ public class ContatoDao {
 	}
 
 	public void altera(final Contato contato) {
-		final String sql = ("update contadtos set nome=?, email=?, endereço=?, dataNascimento=? where id = ?");
+		final String sql = ("update contatos set nome=?, email=?, endereco=?, dataNascimento=? where id = ?");
 
 		try {
 			final PreparedStatement stmt = connection.prepareStatement(sql);
@@ -52,7 +52,7 @@ public class ContatoDao {
 			stmt.execute();
 			stmt.close();
 		} catch (final SQLException e) {
-			throw new DaoException();
+			throw new DaoException(e);
 		}
 	}
 
@@ -80,7 +80,7 @@ public class ContatoDao {
 			stmt.close();
 			return contatos;
 		} catch (final SQLException e) {
-			throw new DaoException();
+			throw new DaoException(e);
 		}
 	}
 
@@ -109,7 +109,7 @@ public class ContatoDao {
 			stmt.close();
 			return contatos;
 		} catch (final SQLException e) {
-			throw new DaoException();
+			throw new DaoException(e);
 		}
 	}
 
@@ -120,7 +120,7 @@ public class ContatoDao {
 			stmt.execute();
 			stmt.close();
 		} catch (final SQLException e) {
-			throw new DaoException();
+			throw new DaoException(e);
 		}
 	};
 }

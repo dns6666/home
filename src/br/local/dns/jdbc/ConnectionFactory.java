@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import br.local.dns.jdbc.modelo.dao.exeption.DaoException;
+
 public class ConnectionFactory {
-	public Connection getConnection(){
+	public Connection getConnection() {
 		try {
 			return DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "dns@1234");
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
+		} catch (final SQLException e) {
+			throw new DaoException(e);
 		}
 	}
 }
