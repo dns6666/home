@@ -10,14 +10,17 @@ public class TestaIncluirFuncionario {
 		final FuncionarioDao dao = new FuncionarioDao();
 		final Funcionario funcionario = new Funcionario();
 
-		funcionario.setNome("Fulano de Tal");
-		funcionario.setCargo("Testador");
-		funcionario.setEndereco("Rua dos Testes, 123");
-		funcionario.setTelefone("12312345");
+		funcionario.setNome(null);
+		funcionario.setCargo("Testador de testes");
+		funcionario.setEndereco("Rua dos Testes sem teste, 123");
+		funcionario.setTelefone("123252635");
 		funcionario.setDataNascimento(Calendar.getInstance());
 
-		dao.adiciona(funcionario);
-		System.out.println("Funcionario adicionado!!");
+		if (dao.adiciona(funcionario))
+			System.out.println("Funcionario adicionado!!");
+		else {
+			System.out.println("ERRO");
+		}
 
 	}
 }
