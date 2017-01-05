@@ -10,8 +10,9 @@ public class TestaLista {
 	public static void main(final String[] args) {
 
 		final ContatoDao dao = new ContatoDao();
-		final List<Contato> contatos = dao.getListaPosicao((long) 2);
-
+		//final List<Contato> contatos = dao.getListaPosicao((long) 2);
+		final List<Contato> contatos = dao.getLista();
+		
 		for (final Contato contato : contatos) {
 			System.out.println("Nome: " + contato.getName());
 			System.out.println("Email: " + contato.getEmail());
