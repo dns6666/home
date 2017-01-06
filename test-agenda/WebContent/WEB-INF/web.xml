@@ -14,7 +14,7 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>servletOiMundo</servlet-name>
-		<servlet-class>br.local.dns.servlet.OiMerda</servlet-class>
+		<servlet-class>br.local.dns.servlet.OiMundo</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>servletOiMundo</servlet-name>
