@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +26,7 @@ public class AdicionaContatoServlet extends HttpServlet {
     private static final long serialVersionUID = 8491632267721482381L;
 
     @Override
-    protected void service(final HttpServletRequest request, final HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws IOException, ServletException {
         final PrintWriter out = response.getWriter();
 
         final String nome = request.getParameter("nome");
@@ -55,11 +56,13 @@ public class AdicionaContatoServlet extends HttpServlet {
         final ContatoDao dao = new ContatoDao();
         dao.adiciona(contato);
 
-        out.println("<html>");
-        out.println("<body>");
-        out.println("Contato " + contato.getName() + " adicionado com sucesso!!");
-        out.println("</body>");
-        out.println("</html>");
+//        out.println("<html>");
+//        out.println("<body>");
+//        out.println("Contato " + contato.getName() + " adicionado com sucesso!!");
+//        out.println("</body>");
+//        out.println("</html>");
 
+        RequestDispatcher rd = request.getRequestDispatcher("/contato-adicionado.jsp");
+        rd.forward(request, response);
     }
 }

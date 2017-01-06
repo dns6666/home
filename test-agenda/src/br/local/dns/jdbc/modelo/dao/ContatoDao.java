@@ -22,7 +22,7 @@ public class ContatoDao {
     }
 
     public void adiciona(final Contato contato) {
-        final String sql = "insert into coos" + "(nome, email, endereco, dataNascimento)" + "values (?,?,?,?)";
+        final String sql = "insert into contatos" + "(nome, email, endereco, dataNascimento)" + "values (?,?,?,?)";
 
         try {
             final PreparedStatement stmt = connection.prepareStatement(sql);
