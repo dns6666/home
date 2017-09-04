@@ -1,6 +1,8 @@
 <%@ attribute name="id" required="true"%>
+<%@ attribute name="date" required="false"%>
 
-<input type="text" id="${id}" name="${id}" readonly="readonly"/>
+
+<input type="text" id="${id}" name="${id}" readonly="readonly" value="${date}" />
 <script>
 	$("#${id}").datepicker({
 		dateFormat : 'dd/mm/yy',

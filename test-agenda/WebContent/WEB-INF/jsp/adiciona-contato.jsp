@@ -10,7 +10,7 @@
 <script src="js/jquery-ui.js"></script>
 </head>
 <body>
-	<c:import url="cabecalho.jsp"></c:import>
+	<c:import url="WEB-INF/jsp/cabecalho.jsp"></c:import>
 	<h1>Adiciona Contatos</h1>
 	<hr />
 	<form action="adicionaContato" method="post">
@@ -21,6 +21,6 @@
 		<input type="submit" value="Gravar">
 
 	</form>
-	<c:import url="rodape.jsp"></c:import>
+	<c:import url="WEB-INF/jsp/rodape.jsp"></c:import>
 </body>
 </html>

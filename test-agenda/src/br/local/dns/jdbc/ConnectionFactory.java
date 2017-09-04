@@ -10,7 +10,7 @@ public class ConnectionFactory {
     public Connection getConnection() {
         try {
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            return DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "dns@1234");
+            return DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "Dns@1234");
         } catch (final SQLException e) {
             throw new DaoException(e);
         }
